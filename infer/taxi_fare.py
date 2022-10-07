@@ -1,9 +1,10 @@
-import pickle
-import json
+import mlfoundry as mlf
 import pandas as pd
 
-with open('xgb.pkl', 'rb') as file:
-    model = pickle.load(file)
+client = mlf.get_client(api_key='djE6dHJ1ZWZvdW5kcnk6dmlzaGFuay1iZXRhdGVzdDoyMzFhYzk=',tracking_uri='https://app.develop.truefoundry.tech')
+model_version = client.get_model('model:truefoundry/vishank-betatest/taxi-fare-prediction/xgboost-regressor:1')
+model = model_version.load()
+
 def infer_model(pickup_datetime,pickup_latitude,pickup_longitude,dropoff_latitude,dropoff_longitude,passenger_count):
     # map the encoded values here
     to_predict = [pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude,passenger_count,pickup_datetime]

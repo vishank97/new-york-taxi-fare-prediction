@@ -7,7 +7,7 @@ service = Service(
     name="fastapi-taxi-fare",
     image=Build(
         build_spec=PythonBuild(
-            command="uvicorn main:app --port 8000 --host 0.0.0.0",
+            command="uvicorn infer.main:app --port 8000 --host 0.0.0.0",
         ),
     ),
     ports=[{"port": 8000}],

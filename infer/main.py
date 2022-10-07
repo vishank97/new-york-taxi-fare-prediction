@@ -1,13 +1,13 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from taxi_fare import infer_model
+from infer.taxi_fare import infer_model
 
 app = FastAPI()
 
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to Spaceship Titanic model inference!"}
+    return {"message": "Welcome to New York Taxi Fare Prediction model inference!"}
 
 class TaxiFare(BaseModel):
     # name: str
