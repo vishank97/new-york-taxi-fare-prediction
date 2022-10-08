@@ -9,7 +9,7 @@ python_build = PythonBuild(
 env = {
     # These will automatically map the secret value to the environment variable.
     "MLF_HOST": "https://app.develop.truefoundry.tech",
-    "MLF_API_KEY": "djE6dHJ1ZWZvdW5kcnk6dmlzaGFuay1iZXRhdGVzdDoyMzFhYzk=",
+    "MLF_API_KEY": "djE6dHJ1ZWZvdW5kcnk6dmlzaGFuay1iZXRhdGVzdDoyMzFhYzk="
 }
 job = Job(
     name="taxi-fare-train",
@@ -19,4 +19,4 @@ job = Job(
         cpu_request=1, cpu_limit=1.5, memory_request=1000, memory_limit=1500
     ),
 )
-job.deploy(workspace_fqn='v1:tfy-dev-cluster:vishank-betatest-ws')
+job.deploy(workspace_fqn='tfy-dev-cluster:vishank-unl')
