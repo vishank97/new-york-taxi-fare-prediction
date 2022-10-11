@@ -1,7 +1,12 @@
 from operator import concat
 import streamlit as st
 import requests
-import os
+import yaml
+with open("demo/demo.yaml", "r") as stream:
+    try:
+        env_vars = yaml.safe_load(stream)
+    except yaml.YAMLError as exc:
+        print(exc)
 
 
 def fetch(session, url):
@@ -13,10 +18,9 @@ def fetch(session, url):
 
 
 def main():
-    request_url = "https://fastapi-taxi-fare-vishank-betatest-ws.tfy-ctl-euwe1-develop.develop.truefoundry.tech"
+    request_url = env_vars['components'][0]['env']['INFER_URL']
     st.set_page_config(page_title="Taxi Fare", page_icon="🚕")
     st.title("Taxi Fare Prediction")
-    session = requests.Session()
     with st.form("my_form"):
         
         pickup_datetime = st.text_input('Pickup Datetime')

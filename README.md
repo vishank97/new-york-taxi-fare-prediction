@@ -1,2 +1,3 @@
-# new-you-taxi-fare-prediction
+# new-york-taxi-fare-prediction
+
 Predicting Taxi Fares of New York City

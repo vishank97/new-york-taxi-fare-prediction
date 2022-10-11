@@ -1,0 +1,16 @@
+name: taxi-fare-train
+components:
+- name: taxi-fare-train
+  type: job
+  image:
+    type: build
+    build_source:
+      type: local
+    build_spec:
+      type: tfy-python-buildpack
+      command: python train/train.py
+  env:
+    MLF_HOST: https://app.develop.truefoundry.tech
+    MLF_API_KEY: djE6dHJ1ZWZvdW5kcnk6dmlzaGFuay1iZXRhdGVzdDoyMzFhYzk=
+    MLF_RUN_ID: 4c589cd1ac5344b8bf2523148dbf3a60
+    WORKSPACE_FQN: v1:tfy-dev-cluster:vishank-betatest-ws

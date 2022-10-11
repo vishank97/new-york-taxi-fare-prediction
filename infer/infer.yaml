@@ -1,0 +1,16 @@
+name: taxi-fare-infer
+components:
+- name: taxi-fare-infer
+  type: job
+  image:
+    type: build
+    build_source:
+      type: local
+    build_spec:
+      type: tfy-python-buildpack
+      command: uvicorn infer.main:app --port 8000 --host 0.0.0.0
+  env:
+    MLF_HOST: https://app.develop.truefoundry.tech
+    MLF_API_KEY: djE6dHJ1ZWZvdW5kcnk6dmlzaGFuay1iZXRhdGVzdDoyMzFhYzk=
+    MODEL_FQN: model:truefoundry/vishank-betatest/taxi-fare-prediction/xgboost-regressor:5
+    WORKSPACE_FQN: v1:tfy-dev-cluster:vishank-betatest-ws

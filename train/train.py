@@ -6,10 +6,16 @@ from sklearn.model_selection import train_test_split
 from xgboost import XGBRegressor
 from sklearn.metrics import mean_squared_error
 import mlfoundry as mlf
+import yaml
 
+with open("train/train.yaml", "r") as stream:
+    try:
+        env_vars = yaml.safe_load(stream)
+    except yaml.YAMLError as exc:
+        print(exc)
 
+# Start the preprocessing of the training data
 def startPreProcessing():
-
     train_df = pd.read_csv('train/train.csv')
 
     train_df = train_df[train_df.fare_amount > 0]
@@ -28,7 +34,7 @@ def startPreProcessing():
     train_df['day_of_week'] = train_df.pickup_datetime.dt.dayofweek
     return train_df
 
-
+# Train the model on the processed data and upload the model along with the metrics to MLFoundry.
 def trainModelandLogParams(train_df):
     
     le = OrdinalEncoder()
@@ -43,9 +49,9 @@ def trainModelandLogParams(train_df):
     xgb.fit(X_train,y_train)
     y_pred_test = xgb.predict(X_test)
 
-    client = mlf.get_client(api_key='djE6dHJ1ZWZvdW5kcnk6dmlzaGFuay1iZXRhdGVzdDoyMzFhYzk=',tracking_uri='https://app.develop.truefoundry.tech')
-    # run = client.create_run(project_name="taxi-fare-prediction", run_name="xgb-model")
-    run = client.get_run("4c589cd1ac5344b8bf2523148dbf3a60")
+    # Logging model, params & metrics to MLFoundry
+    client = mlf.get_client(api_key=env_vars['components'][0]['env']['MLF_API_KEY'],tracking_uri=env_vars['components'][0]['env']['MLF_HOST'])
+    run = client.get_run(env_vars['components'][0]['env']['MLF_RUN_ID'])
 
 
     run.log_params(xgb.get_xgb_params())
