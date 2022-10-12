@@ -22,8 +22,8 @@ class TaxiFare(BaseModel):
     dropoff_longitude: float
     passenger_count: int
 
-@app.post("/infer")
-async def infer(tf: TaxiFare):
+@app.post("/predict")
+async def predict(tf: TaxiFare):
     return infer_model(
        tf.pickup_datetime,
        tf.pickup_latitude,
