@@ -11,6 +11,6 @@ components:
       command: uvicorn infer.main:app --port 8000 --host 0.0.0.0
   env:
     MLF_HOST: https://app.develop.truefoundry.tech
-    MLF_API_KEY: djE6dHJ1ZWZvdW5kcnk6dmlzaGFuay1iZXRhdGVzdDoyMzFhYzk=
-    MODEL_FQN: model:truefoundry/vishank-betatest/taxi-fare-prediction/xgboost-regressor:5
-    WORKSPACE_FQN: v1:tfy-dev-cluster:vishank-betatest-ws
+    MLF_API_KEY: 'MLF_API_KEY' # Get the API_KEY from the settings of truefoundry account
+    MODEL_FQN: 'MODEL_FQN' # Get the latest MODEL_FQN from Experiments page in TrueFoundry
+    WORKSPACE_FQN: 'WORKSPACE_FQN' # Add the WORKSPACE_FQN

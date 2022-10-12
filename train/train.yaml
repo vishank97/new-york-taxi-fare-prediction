@@ -11,6 +11,6 @@ components:
       command: python train/train.py
   env:
     MLF_HOST: https://app.develop.truefoundry.tech
-    MLF_API_KEY: djE6dHJ1ZWZvdW5kcnk6dmlzaGFuay1iZXRhdGVzdDoyMzFhYzk=
-    MLF_RUN_ID: 4c589cd1ac5344b8bf2523148dbf3a60
-    WORKSPACE_FQN: v1:tfy-dev-cluster:vishank-betatest-ws
+    MLF_API_KEY: 'MLF_API_KEY' # Get the API_KEY from the settings of truefoundry account
+    MLF_RUN_ID: # Get the RUN_ID from the Experiments page in TrueFoundry
+    WORKSPACE_FQN: 'WORKSPACE_FQN' # Add the WORKSPACE_FQN

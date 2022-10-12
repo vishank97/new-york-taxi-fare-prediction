@@ -11,6 +11,6 @@ components:
       command: streamlit run demo/demo.py
   env:
     MLF_HOST: https://app.develop.truefoundry.tech
-    MLF_API_KEY: djE6dHJ1ZWZvdW5kcnk6dmlzaGFuay1iZXRhdGVzdDoyMzFhYzk=
-    WORKSPACE_FQN: v1:tfy-dev-cluster:vishank-betatest-ws
-    INFER_URL: https://fastapi-taxi-fare-vishank-betatest-ws.tfy-ctl-euwe1-develop.develop.truefoundry.tech
+    MLF_API_KEY: 'MLF_API_KEY' # Get the API_KEY from the settings of truefoundry account
+    WORKSPACE_FQN: 'WORKSPACE_FQN' # Add the WORKSPACE_FQN
+    INFER_URL: 'INFER_URL' # Add the FastAPI Inference endpoint
